@@ -1,0 +1,36 @@
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2020.1.9)  9 JAN 2020 13:35
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**nime-template.tex
+(./nime-template.tex
+LaTeX2e <2017-04-15>
+Babel <3.18> and hyphenation patterns for 3 language(s) loaded.
+
+! LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.4 \usepackage[blind]{
+                       anonymize}
+? 
+! Emergency stop.
+ ...                                              
+                                                  
+l.4 \usepackage[blind]{
+                       anonymize}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+ 
+Here is how much of TeX's memory you used:
+ 5 strings out of 494988
+ 208 string characters out of 6178639
+ 53503 words of memory out of 5000000
+ 3945 multiletter control sequences out of 15000+600000
+ 3640 words of font info for 14 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 5i,0n,5p,61b,14s stack positions out of 5000i,500n,10000p,200000b,80000s
+No pages of output.

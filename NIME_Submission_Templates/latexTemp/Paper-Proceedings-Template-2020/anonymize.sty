@@ -1,0 +1,99 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{anonymize}[2013/01/13 Custom Package]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   This package will blacken out the text included inside the anonymize function if the blind option is set
+%    Author Angelo Fraietta
+%    Univeristy of New South Wales
+%    10 June 2018
+%
+%    Usage 
+%    \usepackage[blind]{anonymize} will blacken text inside function \anonymize{text}
+%    \usepackage{anonymize} will not modify text inside function \anonymize{text}
+%
+%
+%    The basis for this code was found at 
+%    https://tex.stackexchange.com/questions/41995/efficient-ways-to-anonymize-a-document/42090 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{soul}
+\usepackage{tikz}
+\usepackage{calc}
+\usetikzlibrary{calc}
+
+
+\makeatletter
+%% Global indentation option
+\newif\if@anonymize\@anonymizefalse
+
+\DeclareOption{blind}{
+	\@anonymizetrue    % Uncomment to hide text
+}
+
+
+\ProcessOptions\relax
+
+
+\newdimen\highlight@previous
+\newdimen\highlight@current
+\newlength{\item@width}
+
+\if@anonymize
+
+\newcommand{\anonybib}[1]{\cite{#1-hidden}}
+\newcommand{\anoncite}[1]{#1-hidden}
+
+\newcommand{\highlight@DoHighlight}{
+	\fill [outer sep = -15pt, inner sep = 0pt, color=black]
+	($(begin highlight)+(0,8pt)$) rectangle ($(end highlight)+(0,-3pt)$) ;
+}
+
+\newcommand{\highlight@BeginHighlight}{
+	\coordinate (begin highlight) at (0,0) ;
+}
+
+\newcommand{\highlight@EndHighlight}{
+	\coordinate (end highlight) at (0,0) ;
+}
+\DeclareRobustCommand*\anonymize{%
+	\SOUL@setup
+	\def\SOUL@preamble{%
+		\begin{tikzpicture}[overlay, remember picture]
+		\highlight@BeginHighlight
+		\highlight@EndHighlight
+		\end{tikzpicture}%
+	}%
+	%
+	\def\SOUL@postamble{%
+		\begin{tikzpicture}[overlay, remember picture]
+		\highlight@EndHighlight
+		\highlight@DoHighlight
+		\end{tikzpicture}%
+	}%
+	%
+	\def\SOUL@everysyllable{%
+		\begin{tikzpicture}[overlay, remember picture]
+		\path let \p0 = (begin highlight), \p1 = (0,0) in \pgfextra
+		\global\highlight@previous=\y0
+		\global\highlight@current =\y1
+		\endpgfextra (0,0) ;
+		\ifdim\highlight@current < \highlight@previous
+		\highlight@DoHighlight
+		\highlight@BeginHighlight
+		\fi
+		\end{tikzpicture}%
+		\settowidth{\item@width}{\the\SOUL@syllable}%
+		\makebox[\item@width]{}%
+		\tikz[overlay, remember picture] \highlight@EndHighlight ;%
+	}%
+	\SOUL@
+}
+\else
+\newcommand{\anonymize}[1]{#1}
+\newcommand{\anonybib}[1]{\cite{#1}}
+\newcommand{\anoncite}[1]{#1}
+\fi
+\makeatother
+
+
+\endinput
