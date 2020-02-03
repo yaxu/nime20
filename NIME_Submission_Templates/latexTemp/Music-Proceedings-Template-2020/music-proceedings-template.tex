@@ -53,7 +53,7 @@
 
 % The "title" command has an optional parameter,
 % allowing the author to define a "short title" to be used in page headers.
-\title{Title: Your NIME Music Performance}
+\title{Title: Feedforward}
 
 
 
@@ -62,39 +62,30 @@
 % Of note is the shared affiliation of the first two authors, and the
 % "authornote" and "authornotemark" commands
 % used to denote shared contribution to the research.
-\author{Author \#1}
+\author{Name removed for peer review}
 \affiliation{%
-  \institution{Affilitation \#1}
-  \city{City}
-  \country{Country}
+  \institution{--}
+  \city{--}
+  \country{--}
 }
-
-\author{Author \#2}
-\affiliation{%
-  \institution{Affilitation \#1}
-  \city{City}
-  \country{Country}
-}
-
-\author{Author \#3}
-\affiliation{%
-  \institution{Affilitation \#1}
-  \city{City}
-  \country{Country}
-}
-
+%\author{Alex McLean}
+%\affiliation{%
+%  \institution{Research Institute for the History of Science and Technology, Deutsches Museum}
+%  \city{Munich}
+%  \country{Germany}
+%}
 
 % By default, the full list of authors will be used in the page
 % headers. Often, this list is too long, and will overlap
 % other information printed in the page headers. This command allows
 % the author to define a more concise list
 % of authors' names for this purpose.
-\renewcommand{\shortauthors}{Trovato and Tobin, et al.}
+\renewcommand{\shortauthors}{Removed}
 
 
 % Keywords. The author(s) should pick words that accurately describe
 % the work being presented. Separate the keywords with commas.
-\keywords{datasets, neural networks, gaze detection, text tagging}
+\keywords{Live Coding, Feedback, Text Editor, TUI, TidalCycles}
 
 
 % This command processes the author and affiliation and title
@@ -102,48 +93,59 @@
 \maketitle
 %\thispagestyle{firstPage}
 
-
 \section{Program Notes}
-\lipsum[1] Plus, some citations to articles: \cite{bowman:reasoning,
-clark:pct, braams:babel, herlihy:methodology}.
 
-\begin{figure}[hbt]
-  \includegraphics{NIME_Mouse}
-  \caption{The NIME Mouse}
-\end{figure}
+This is an improvised, from-scratch live coding performance. The NIME
+interface which this performance showcases is the new Feedfoward
+editor for the TidalCycles live coding environment. Feedforward is
+written in Haskell using the ncurses library for terminal-based user
+interfaces. It runs on low-powered hardware including the Raspberry Pi
+Zero, with formative testing of prototypes conducted with several
+groups of children between the ages of 8 and 14.
 
+Feedforward has a number of features designed to support improvised,
+multi-pattern live coding. Individual Tidal patterns are addressable
+with hotkeys for fast mute and unmuting. Each pattern has a stereo VU
+meter, to aid the quick matching of sound to pattern within a mix.
 
-\section{Project Description}
-\lipsum[2]
+In addition, TidalCycles has been extended to store context with each
+event, so that source code positions in its polyrhythmic sequence
+mini-notation are tracked. This allows steps to be highlighted in the
+source code whenever they are active. This works even when Tidal
+combinators have been applied to manipulate the timeline. Formal
+evaluation has yet to take place, but this feature appears to support
+learning of how pattern manipulations work in Tidal.
+
+Feedforward and TidalCycles is free/open source software under a GPL
+licence version 3.0.
 
 \section{PERFORMANCE NOTES}
-\lipsum[3]
+
+Space: The performance would work best as an algorave-style club
+performance, but could also work in a concert setting.
+
+Technical requirements: Projection to rear of stage, with HDMI cable
+to laptop on stage. Full-range, stereo PA, with on stage stereo
+monitoring. Venue provides stereo pair of XLR cables from my Radial
+USB DI.
+
+Performers: Solo laptop musician
+
+Feasibility: I have improvised hundreds of from-scratch live coded
+performances over the past 17 years. I have performed with this new
+editor feedforward several times including a live streamed performance
+watched by tens of thousands of people.
 
 \section{Media Links}
 
-\begin{itemize}
-	\item Video: \url{www.yournimevideolink.com/younameit}
-	\item Audio: \url{www.yournimeaudiolink.com/younameit}
-\end{itemize}
+A short demonstration video: \url{https://vimeo.com/388656525}
 
-
-% The acknowledgments section is defined using the "acks" environment
-% (and NOT an unnumbered section). This ensures the proper
-% identification of the section in the article metadata, and the
-% consistent spelling of the heading.
 \begin{acks}
-The authors would like to thank...
-\\
-This work was supported by...
+Removed for peer review.
 \end{acks}
-
-\section*{Ethical Standards}
-Please note, that if any elements of the submitted work involve research with people or animals, authors should include a section “Compliance with Ethical Standards” before the References, including (if relevant): information regarding sources of funding, potential conflicts of interest (financial or non-financial),  informed consent if the research involved human participants, statement on welfare of animals if the research involved animals.
 
 % The next two lines define the bibliography style to be used, and
 % the bibliography file.
-\bibliographystyle{nime-music-references.bst}
-\bibliography{nime-references.bib}
 \end{document}
 \endinput
 %
