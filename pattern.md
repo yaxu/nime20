@@ -186,6 +186,10 @@ To conclude, let's consider the place of algorithmic pattern as an interface bet
 
 The same lesson applies to algorithmic patterns in live coding. We can work with the pattern as code, but it does not notate what we hear and feel. Not only do interference patterns work inside the computer at scales beyond our imaginations, but they then leave the computer as sound, perceived as music in ways which do not exist in the notation but in our embodied minds. Live coding involves an improvised movement of pattern across cognition, computation and perception, an fundamentally experimental activity, where code is developed in the open-minded and open-bodied spirit of discovery. Without understanding that the algorithm is only one step in the creation of music, we might find that our music simply falls apart.
 
+# Acknowledgments
+
+This research is conducted by the PENELOPE  project, with funding from the European Research Council (ERC) under the Horizon 2020 research and innovation programme of the European Union, grant agreement No 682711.
+
 # Bibliography
 
 \small
