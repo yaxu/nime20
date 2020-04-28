@@ -72,7 +72,7 @@ A _query_ represents the pattern’s behaviour, as a function from time arcs to 
 
 ## Tidal composition
 
-The above definition of pattern does not say much about Tidal as an interface, but what follows from it is a rich approach to composition, supported by a large library of pattern combinators. _Composition_ is meant here in both a musical and computer scientific sense, in terms of composing together musical behaviours into new, generally more complex behaviours. Tidal supports a multitude of ways to combine patterns together, many based on Tidal's allowing patterns to be treated values; that is, any function that combines two values, can be used to combine two _patterns_ of values.[^In other words, in functional programming terms, in Tidal a pattern is an applicative functor.]
+The above definition of pattern does not say much about Tidal as an interface, but what follows from it is a rich approach to composition, supported by a large library of pattern combinators. _Composition_ is meant here in both a musical and computer scientific sense, in terms of composing together musical behaviours into new, generally more complex behaviours. Tidal supports a multitude of ways to combine patterns together, many based on Tidal's allowing patterns to be treated as values; that is, any function that combines two values, can be used to combine two _patterns_ of values.^[In other words, in functional programming terms, in Tidal a pattern is an applicative functor.]
 
 As a trivial example, let's combine two tidal patterns `fastcat [1,2,3]` and `fastcat [4,5]`. The first thing to note is that `fastcat` combines a list of patterns into a contiguous sequence, of equal durations over a cycle. The metrical cycle is in general the reference point in a Tidal operation, rather than a beat or step. Therefore, we need to combine two patterns with different structures - one has three events per cycle, and the other has two. We can visualise them like this:
 
@@ -109,7 +109,7 @@ Tidal has a set of such operators for basic arithmetic, but any function can be 
 blend
   <$> (slow 4 sine)
   *> "[blue, pink red grey, darkblue]*20"
-  <*> "{blue orange, darkgrey yellow white}*11.5"
+  <*> "{blue orange, darkgrey yellow pink}*11.5"
 ```
 
 Instead of using 'fastcat', the above makes straightforward use of Tidal's mini-notation for polyrhythmic sequences, denoted by double quotes.
@@ -131,7 +131,7 @@ fast timepat pat =
 What is interesting in the above is that the time factor input is itself a pattern. With combined use of the `<$>` operator and `innerJoin` function, we manipulate the target pattern _inside_ the pattern of time. This higher order magic uses much the same procedure to combine patterns as the one described earlier. The result is a highly flexible function for patterning the speed of a pattern. For example:
 
 ```{.haskell render="gradient" width="500"}
-fast 4 $ fast "1 2 3" "white pink red orange"
+fast 4 $ fast "1 2 3" "grey pink red orange"
 ```
 
 The above switches between slices of the colour pattern running at different speeds. An additional `fast` function is applied so that you can see four cycles of the result. Once a few more simple transformations are added, textures begin to form:
@@ -141,7 +141,7 @@ superimpose rev $ superimpose (fast 2)
    $ chunk 4 (blend 0.5 red <$>) 
    $ superimpose rev 
    $ fast "1 5 3" 
-   $ iter 4 "white pink red orange"
+   $ iter 4 "grey pink red orange"
 ```
 
 Again, the above code does not calculate anything on its own, it composes together into a single function, which is then passed to the scheduler (or in this case, graphics renderer) which queries the required time arcs.
